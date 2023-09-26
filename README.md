@@ -1,1 +1,1 @@
-
+Hi there! My name is Abdullah, and I have transitioned from a non-tech background to data analytics. I plan to get proficient in using SQL and becoming proficient in that, followed by learning data visualization tools like Tableau and PowerBI and finally, getting my hands on Python. I will be creating repositories tagged against the language/tool I'll use in the projects. Join me in this self-learning jouney! I can be reached out through my LinkedIn handle attached in my profile. 
