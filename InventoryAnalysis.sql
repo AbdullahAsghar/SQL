@@ -1,3 +1,7 @@
+--Dataset taken from: Kaggle.
+--Dataset Link: https://www.kaggle.com/datasets/bhanupratapbiswas/inventory-analysis-case-study
+--Analysis Areas: Sales Performance, Inventory Turnover, Price Elasticity, Sales Contribution, Geographical Sales Patterns, Correlation between two vairables.
+
 --Sales Performance Ranking.
 --Rank the brands based on their total sales dollars, considering a rolling window of the last two months. Identify brands with consistent high rankings.
 --Solution: I created a CTE calculating the total sales of each brand, and ranked each brand's sales using RANK function.
