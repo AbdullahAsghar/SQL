@@ -5,9 +5,8 @@
 --Case Study Questions:
 
 --1. What impact did the campaign have on loyalty program memberships?
-
 --Solution 1: This query segregates all enrollments based on their type i.e. standard or promotional, and gives a count of all of them.
-			--Results show that enrollments during Feb - Apr 2018 increased due to promotional campaign.
+--Results show that enrollments during Feb - Apr 2018 increased due to promotional campaign.
 
 SELECT
     enrollment_year,
@@ -22,7 +21,7 @@ ORDER BY
     enrollment_year ASC, enrollment_month ASC;
 
 --Solution 2: ChatGPT's assistance taken. A CTE first calculates the quarter-wise enrollments, and the resuts are then further linked to the main query using LAG function to find out QoQ %age change between the enrollments.
-			--Results show that a 35% uptake in enrollments was observed during the campaign months.
+--Results show that a 35% uptake in enrollments was observed during the campaign months.
 
 WITH K AS (
     SELECT
@@ -52,7 +51,7 @@ ORDER BY
 
 --GENDER-WISE ANALYSIS.
 --Solution: I first analyzed all enrollments gender-wise, and calculated the %age split MoM. Even with campaign, there wasn't any significant impact on enrollments gender-wise, with a constant average 50%-50% split in enrollments between male and female.
-		  --This means that for every 100 enrollments each month, 50 males and 50 females signed up for membership.
+--This means that for every 100 enrollments each month, 50 males and 50 females signed up for membership.
 
 SELECT
     enrollment_year AS Year,
@@ -69,7 +68,7 @@ ORDER BY
 
 --EDUCATION-WISE ANALYSIS.
 --Solution: Basic query structure, with a MoM %age split of all enrollments education-level wise.
-		  --Even with campaign, there wasn't any significant impact on enrollments if data is observed educational demographic wise. Similar %age contribution across all months.
+--Even with campaign, there wasn't any significant impact on enrollments if data is observed educational demographic wise. Similar %age contribution across all months.
 
 SELECT
     enrollment_year AS Year,
@@ -165,7 +164,7 @@ GROUP BY
 
 --BOOKED FLIGHTS BY THE CAMPAIGN ENROLLED MEMBERS.
 --Solution: Created a CTE first to get the enrollment type of all members against their flight activity. From their, I obtained the contribution of standard and promotional enrollments in total flights booked during 2018,
-		  --where it is clearly visible that enrollments through promotion contributed to an average, 22% of flights booked during Jun-Aug.
+--where it is clearly visible that enrollments through promotion contributed to an average, 22% of flights booked during Jun-Aug.
 
 WITH k AS 
 (
@@ -256,11 +255,7 @@ GROUP BY
 ORDER BY
     net_enrollments DESC;
 
-
-
-
-
---Customer Flight Activity:
+--6. Customer Flight Activity:
 --a. Find the Loyalty Numbers of customers who redeemed the highest dollar amount worth of points in a specific month and year.
 --Solution: First, I created a CTE to rank all dollar amount worth of points redeemed. I used DENSE_RANK function to return consecutive rans in case of same redemption values. After that, I created a main query to obtain only the top 3 ranks along with an additional condition: not to return any rank if the redemption value is '0', since many customers didn't redeem their points.
 
@@ -330,7 +325,7 @@ GROUP BY
 HAVING
     COUNT(DISTINCT month) = 12;
 
---Customer Loyalty History:
+--7. Customer Loyalty History:
 --a. Find the Loyalty Numbers of customers who canceled their membership within the first six months of enrolling.
 --Solution: ChatGPT' assistance taken. Basic query structure, with WHERE clause added with first condition segregating data if cancellation and enrollment years are same. The next condition filters data if the cancellation and enrolment years are not same.
 
@@ -375,7 +370,7 @@ FROM
 ORDER BY
     x.avgsalary DESC;
 
---Combining Data:
+--8. Combining Data:
 --a. Retrieve the Loyalty Numbers and enrollment details of customers who booked flights in a specific year but have not canceled their membership.
 --Solution: I first created a CTE to extract the sum of all flights taken by each customer. I joined it with the 'loyaltyhistory' table to find out the enrollment details of each customer, with a WHERE condition filtering data having no cancellation date.
 
@@ -452,4 +447,6 @@ FROM
     cte
 WHERE
     cte.rank IN (1);
+
+---------END---------
 
