@@ -73,4 +73,4 @@ rank | continent_name | country_code |    country_name   |     avg_gdp
 
 1. No values for records having NULL province.
 2. Different country and GDP per capita for Africa and Asia.
-3. Same country for Europe but different GDP per capita values. Same for North America and Oceania.
+3. Same country for Europe but different GDP per capita values. Same for North America and Oceania.*/
