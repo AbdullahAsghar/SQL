@@ -1,9 +1,7 @@
-### Instructions
+### Basic Instructions
 
 Welcome to the Braintree Analytics Code Challenge!
 
-- Create a SQL database using the attached CSV files.
-- Use the database to answer the following questions.
 - All answers that return money values should be rounded to 2 decimal points and preceded by the "$" symbol (e.g. "$1432.10").
 - All answers that return percent values should be between -100.00 to 100.00, rounded to 2 decimal points and followed by the "%" symbol (e.g. "58.30%").
  
