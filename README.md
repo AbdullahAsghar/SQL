@@ -1,6 +1,6 @@
 # SQL Projects
 
-This repository contains all projects I have completed using SQL. All projects are gathered in their respective repositories for further clarification. Ordered from latest to oldest.
+This repository contains all projects I have completed using SQL. All projects are gathered in their respective repositories for further clarification. **Ordered from latest to oldest.**
 
 | Repository | Brief Overview |  Dataset Link  |  Tested Topics  |
 |:-:|:-:|:-:|:-:|
