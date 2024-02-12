@@ -1,4 +1,4 @@
-/*4a. What is the count of countries and sum of their related gdp_per_capita values for the year 2007 where the string 'an' (case insensitive) appears anywhere in the country name?
+/*3a. What is the count of countries and sum of their related gdp_per_capita values for the year 2007 where the string 'an' (case insensitive) appears anywhere in the country name?
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ WHERE
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-/*4b. Repeat question 4a, but this time make the query case sensitive.
+/*3b. Repeat question 4a, but this time make the query case sensitive.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
