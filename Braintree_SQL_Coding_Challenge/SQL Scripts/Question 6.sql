@@ -69,3 +69,21 @@ WHERE
 ORDER BY 
     q.continent_name ASC, 
     SUBSTRING(q.country_name, 2, 3) DESC;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/*Solution:
+
+| continent_name | country_code | country_name                                       | gdp_per_capita | running_total |
+|----------------|--------------|----------------------------------------------------|----------------|---------------|
+| NULL           | LCN          | Latin America & Caribbean (all income levels)      | $7,196.18      | $75,935.8     |
+| Africa         | MUS          | Mauritius                                          | $6,928.97      | $74,586.9     |
+| Asia           | MYS          | Malaysia                                           | $7,277.76      | $73,326.5     |
+| Europe         | LTU          | Lithuania                                          | $11,649.4      | $71,714.4     |
+| North America  | MEX          | Mexico                                             | $7,690.55      | $77,057.1     |
+| Oceania        | AUS          | Australia                                          | $42,721.9      | $103,765      |
+| South America  | VEN          | Venezuela, RB                                      | $11,525        | $74,829.4     |
+
+*/
+
+
