@@ -1,4 +1,4 @@
-/*7. Find the country with the highest average gdp_per_capita for each continent for all years. Now compare your list to the following data set. Please describe any and all mistakes that you can find with the data set below.
+/*6. Find the country with the highest average gdp_per_capita for each continent for all years. Now compare your list to the following data set. Please describe any and all mistakes that you can find with the data set below.
 
 rank | continent_name | country_code | country_name | avg_gdp_per_capita 
 ---- | -------------- | ------------ | ------------ | -----------------
