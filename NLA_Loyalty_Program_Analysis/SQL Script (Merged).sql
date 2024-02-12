@@ -1,9 +1,3 @@
---Dataset taken from: Maven Analytics.
---Dataset Link: https://mavenanalytics.io/data-playground?dataStructure=2lXwWbWANQgI727tVx3DRC
---Analysis Areas: Exploratory Data Analysis, Revenue Analysis, Performance Metrics Calculation, Trends, Customer Segmentation.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 --Case Study Questions:
 
 --1. What impact did the campaign have on loyalty program memberships?
