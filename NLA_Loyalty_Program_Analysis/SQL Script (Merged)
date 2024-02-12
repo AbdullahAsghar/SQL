@@ -2,12 +2,14 @@
 --Dataset Link: https://mavenanalytics.io/data-playground?dataStructure=2lXwWbWANQgI727tVx3DRC
 --Analysis Areas: Exploratory Data Analysis, Revenue Analysis, Performance Metrics Calculation, Trends, Customer Segmentation.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --Case Study Questions:
 
 --1. What impact did the campaign have on loyalty program memberships?
 
 --Solution 1: This query segregates all enrollments based on their type i.e. standard or promotional, and gives a count of all of them.
-			--Results show that enrollments during Feb - Apr 2018 increased due to promotional campaign.
+--Results show that enrollments during Feb - Apr 2018 increased due to promotional campaign.
 
 SELECT
     enrollment_year,
@@ -21,8 +23,10 @@ GROUP BY
 ORDER BY
     enrollment_year ASC, enrollment_month ASC;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --Solution 2: ChatGPT's assistance taken. A CTE first calculates the quarter-wise enrollments, and the resuts are then further linked to the main query using LAG function to find out QoQ %age change between the enrollments.
-			--Results show that a 35% uptake in enrollments was observed during the campaign months.
+--Results show that a 35% uptake in enrollments was observed during the campaign months.
 
 WITH K AS (
     SELECT
@@ -48,11 +52,13 @@ GROUP BY
 ORDER BY
     k.year, k.quarter;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --2. Was the campaign adoption more successful for certain demographics of loyalty members?
 
 --GENDER-WISE ANALYSIS.
 --Solution: I first analyzed all enrollments gender-wise, and calculated the %age split MoM. Even with campaign, there wasn't any significant impact on enrollments gender-wise, with a constant average 50%-50% split in enrollments between male and female.
-		  --This means that for every 100 enrollments each month, 50 males and 50 females signed up for membership.
+--This means that for every 100 enrollments each month, 50 males and 50 females signed up for membership.
 
 SELECT
     enrollment_year AS Year,
@@ -66,6 +72,8 @@ GROUP BY
     enrollment_year, enrollment_month
 ORDER BY
 	Year ASC, Month ASC
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --EDUCATION-WISE ANALYSIS.
 --Solution: Basic query structure, with a MoM %age split of all enrollments education-level wise.
@@ -88,6 +96,8 @@ GROUP BY
     enrollment_year, enrollment_month
 ORDER BY
 	Year ASC, Month ASC
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --SALARY-WISE.
 --Solution: Selected the data for only 2017-18 to simplify analysis. Removing the ~26% records with salaries as NULL. However, the campaign didn't have any significant impact on enrollments when we see the members with respect to the demographic of salary.
@@ -129,6 +139,8 @@ GROUP BY
 ORDER BY
     k.enrollment_year ASC, k.enrollment_month ASC;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --MARITAL STATUS-WISE.
 --Solution: No significant impact seen as such in enrollments in campaign months.
 
@@ -148,6 +160,8 @@ GROUP BY
 ORDER BY
 	Year ASC, Month ASC
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --3. What impact did the campaign have on booked flights during summer?
 
 --FLIGHTS BOOKED DURING CAMPAIGN MONTHS.
@@ -163,9 +177,11 @@ FROM
 GROUP BY
 	Month, Year;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --BOOKED FLIGHTS BY THE CAMPAIGN ENROLLED MEMBERS.
---Solution: Created a CTE first to get the enrollment type of all members against their flight activity. From their, I obtained the contribution of standard and promotional enrollments in total flights booked during 2018,
-		  --where it is clearly visible that enrollments through promotion contributed to an average, 22% of flights booked during Jun-Aug.
+/*Solution: Created a CTE first to get the enrollment type of all members against their flight activity. From their, I obtained the contribution of standard and promotional enrollments in total flights booked during 2018,
+where it is clearly visible that enrollments through promotion contributed to an average, 22% of flights booked during Jun-Aug.*/
 
 WITH k AS 
 (
@@ -201,6 +217,8 @@ GROUP BY
 ORDER BY
 	k.month ASC;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --4. What is the cancellation rate bifurcated by standard and promotional enrollments?
 --SOLUTION: Basic query structure, calculating the monthly cancellation split between the standard and promotional enrollments from the total enrollments.
 --Cancellations from promotional enrollments have spiked up in October 2018, and remained at an average of 54% of total cancellations till December, which is worth looking into.
@@ -221,6 +239,8 @@ GROUP BY
 ORDER BY
     year ASC,
     month ASC;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --5. What are net enrollments each month?
 --SOLUTION: A main query, linked up with a subquery, obtains the total enrollments and cancellations done each month. Data filtered only for 2017-18 for quich data retrieval.
@@ -256,9 +276,7 @@ GROUP BY
 ORDER BY
     net_enrollments DESC;
 
-
-
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Customer Flight Activity:
 --a. Find the Loyalty Numbers of customers who redeemed the highest dollar amount worth of points in a specific month and year.
@@ -284,6 +302,8 @@ FROM
   RankedPoints
 WHERE
   rank IN (1, 2, 3) AND dollar_cost_points_redeemed <> 0;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    
 --b. Calculate the average distance traveled by customers who have a loyalty card status of 'Aurora'.
 --Solution: I first created a CTE to find out the total flights and distance travelled by each customer, and joined it with the other table to extract the card statuses of each customer. After that, I created a main query to find out the average distance flown by each customer, provided that the total flights should not be equal to zero, otherwise it would return NULL in the calculation, along with the condition that the card status should be 'Aurora'. 
@@ -314,6 +334,8 @@ WHERE
 ORDER BY
 	x.distanceflown DESC, x.totalflights DESC;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --c. Identify the Loyalty Numbers of customers who booked flights in all months of a given year.
 --Solution: Basic query structue, with WHERE condition specifying to select only those customers having flights more than 0, and HAVING condition to select those customers whose records can be found for all months i.e. 12.
 
@@ -329,6 +351,8 @@ GROUP BY
     loyalty_number, year, month
 HAVING
     COUNT(DISTINCT month) = 12;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Customer Loyalty History:
 --a. Find the Loyalty Numbers of customers who canceled their membership within the first six months of enrolling.
@@ -352,7 +376,9 @@ WHERE
         cancellation_month < enrollment_month AND
         12 - enrollment_month + cancellation_month <= 6
     );
-	   
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --b. Identify the city with the highest average annual income among customers with a 'Master' education level.
 --Solution: I first created a CTE to group all average salaries according to education levels and cities, and applied WHERE condition to only call back records with 'Master' as their education. In the main query, I used the TOP operator with ORDER BY to find out the city with highest average salary with 'Master' education.
 
@@ -374,6 +400,8 @@ FROM
     x
 ORDER BY
     x.avgsalary DESC;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Combining Data:
 --a. Retrieve the Loyalty Numbers and enrollment details of customers who booked flights in a specific year but have not canceled their membership.
@@ -404,6 +432,8 @@ WHERE
 ORDER BY
     a.totalflights DESC;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --b. Calculate the total CLV for customers who redeemed points in a specific province.
 --Solution: A CTE is created first which groups the sum of redeemed points against each loyalty number. This also gives us those loyalty numbers who never redeemed a single point. A main query is joined with this one, which extracts the total CLV of all of those customers who had atleast 1 point redeemed.
 
@@ -428,6 +458,8 @@ WHERE
 	k.ptsredeemed > 0
 GROUP BY
     l.province;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 --c. Find the Loyalty Numbers of customers who booked the highest number of flights in a specific city.
 --Solution: A CTE is created first to join the two tables together to get the sum of all flights grouped against each loyalty number and its respective city. Each record is also ranked, partitioned by city. From there, main query fetches only the highest flight bookers in each city.
@@ -452,4 +484,6 @@ FROM
     cte
 WHERE
     cte.rank IN (1);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
