@@ -9,11 +9,15 @@ rank | continent_name | country_code | country_name | avg_gdp_per_capita
    1 | Oceania        | AUS          | Australia    |         $47,070.39
    1 | South America  | CHL          | Chile        |         $10,781.71
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Answer: The query mentioned below was constructed in this way:
 1. First, a sub-query named 'b' is created to join continent_map with continents table to get the names of all continents against each country.
 2. This sub-query was used to further create a CTE named 'avg_cte' to get the names of all countries from countries table. Average GDP per capita for each country was also calculated in this CTE for the period of 2004-2012.
 3. Another sub-query was created that is linked with the CTE, named 'k', having DENSE_RANK function to rank each country's GDP per capita in the window of its own continent. 
 4. From there, a main query links that only selects the desired columns from the sub-query, along with the condition to only select the countries whose average GDP per capita was ranked 1st in their respective continents.*/
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 WITH avg_cte AS ( 
     SELECT 
@@ -56,6 +60,8 @@ FROM
     ) AS k
 WHERE 
     k.rank = 1
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*Solution:*/
 
