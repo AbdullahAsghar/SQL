@@ -91,3 +91,5 @@ WHERE
 | 10       | South America| GUY          | Guyana                                 | 10%         |
 | 11       | South America| BRA          | Brazil                                 | -9.83%      |
 | 12       | South America| PRY          | Paraguay                               | -3.62%      |
+
+*/
