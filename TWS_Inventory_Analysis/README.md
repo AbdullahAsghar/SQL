@@ -1,5 +1,6 @@
 ## TWS - Inventory Analysis.
 
+*(2 .csv files couldn't be uploaded in the 'Datasets' sub-folder because of their size. Datasets can be extracted from [here](https://www.kaggle.com/datasets/bhanupratapbiswas/inventory-analysis-case-study))*<br>
 ### Introduction.
 
 TWS (The Wine Store), a fictitious wine manufacturer, requires a holistic analysis of its inventory for the year 2016.
