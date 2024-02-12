@@ -6,7 +6,7 @@ total
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Answer:
-1. Pretty basicquery structure, with a sub-query created first, named 'b', to extract all those records from per_capita table where year is 2012 and GDP per capita values are null.
+1. Pretty basic query structure, with a sub-query created first, named 'b', to extract all those records from per_capita table where year is 2012 and GDP per capita values are null.
 2. Once the temporary table is established, it is connected with the main query thorugh RIGHT JOIN to extract the sum of GDP per capita of all of these countries in all years before 2012 and their count in each year. */
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
