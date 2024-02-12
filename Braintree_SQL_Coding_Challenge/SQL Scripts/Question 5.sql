@@ -1,4 +1,4 @@
-/*6. All in a single query, execute all of the steps below and provide the results as your final answer:
+/*5. All in a single query, execute all of the steps below and provide the results as your final answer:
 
 a. create a single list of all per_capita records for year 2009 that includes columns:
 - continent_name
