@@ -1,6 +1,14 @@
 # SQL Projects
 
-This repository contains all projects I have completed using SQL. All projects are gathered in their respective repositories for further clarification. **Ordered from latest to oldest.**
+This repository contains all projects I have completed using SQL.<br>
+<br>
+Each project is categorized under its own sub_folder, with ideally three resources.<br>
+a. **README.md** (*an introduction of the project*) <br>
+b. **Datasets.** (*used for analysis*) <br>
+c. **SQL Script** (*this can be a singular file or multiple, depending on the length of queries written*)<br>
+<br>
+**Projects ordered from latest to oldest.**
+<br>
 
 | Repository | Brief Overview |  Dataset Link  |  SQL Topics Tested  |  Concepts Examined  |  
 |:-:|:-:|:-:|:-:|:-:|
