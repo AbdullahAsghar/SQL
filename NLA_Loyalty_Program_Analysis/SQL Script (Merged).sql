@@ -279,7 +279,7 @@ ORDER BY
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Customer Flight Activity:
---a. Find the Loyalty Numbers of customers who redeemed the highest dollar amount worth of points in a specific month and year.
+--1. Find the Loyalty Numbers of customers who redeemed the highest dollar amount worth of points in a specific month and year.
 --Solution: First, I created a CTE to rank all dollar amount worth of points redeemed. I used DENSE_RANK function to return consecutive rans in case of same redemption values. After that, I created a main query to obtain only the top 3 ranks along with an additional condition: not to return any rank if the redemption value is '0', since many customers didn't redeem their points.
 
 WITH RankedPoints AS (
@@ -305,7 +305,7 @@ WHERE
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    
---b. Calculate the average distance traveled by customers who have a loyalty card status of 'Aurora'.
+--2. Calculate the average distance traveled by customers who have a loyalty card status of 'Aurora'.
 --Solution: I first created a CTE to find out the total flights and distance travelled by each customer, and joined it with the other table to extract the card statuses of each customer. After that, I created a main query to find out the average distance flown by each customer, provided that the total flights should not be equal to zero, otherwise it would return NULL in the calculation, along with the condition that the card status should be 'Aurora'. 
 
 WITH x AS
@@ -336,7 +336,7 @@ ORDER BY
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---c. Identify the Loyalty Numbers of customers who booked flights in all months of a given year.
+--3. Identify the Loyalty Numbers of customers who booked flights in all months of a given year.
 --Solution: Basic query structue, with WHERE condition specifying to select only those customers having flights more than 0, and HAVING condition to select those customers whose records can be found for all months i.e. 12.
 
 SELECT
@@ -355,7 +355,7 @@ HAVING
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Customer Loyalty History:
---a. Find the Loyalty Numbers of customers who canceled their membership within the first six months of enrolling.
+--1. Find the Loyalty Numbers of customers who canceled their membership within the first six months of enrolling.
 --Solution: ChatGPT' assistance taken. Basic query structure, with WHERE clause added with first condition segregating data if cancellation and enrollment years are same. The next condition filters data if the cancellation and enrolment years are not same.
 
 SELECT
@@ -379,7 +379,7 @@ WHERE
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---b. Identify the city with the highest average annual income among customers with a 'Master' education level.
+--2. Identify the city with the highest average annual income among customers with a 'Master' education level.
 --Solution: I first created a CTE to group all average salaries according to education levels and cities, and applied WHERE condition to only call back records with 'Master' as their education. In the main query, I used the TOP operator with ORDER BY to find out the city with highest average salary with 'Master' education.
 
 WITH x AS (
@@ -404,7 +404,7 @@ ORDER BY
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Combining Data:
---a. Retrieve the Loyalty Numbers and enrollment details of customers who booked flights in a specific year but have not canceled their membership.
+--1. Retrieve the Loyalty Numbers and enrollment details of customers who booked flights in a specific year but have not canceled their membership.
 --Solution: I first created a CTE to extract the sum of all flights taken by each customer. I joined it with the 'loyaltyhistory' table to find out the enrollment details of each customer, with a WHERE condition filtering data having no cancellation date.
 
 WITH a AS (
@@ -434,7 +434,7 @@ ORDER BY
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---b. Calculate the total CLV for customers who redeemed points in a specific province.
+--2. Calculate the total CLV for customers who redeemed points in a specific province.
 --Solution: A CTE is created first which groups the sum of redeemed points against each loyalty number. This also gives us those loyalty numbers who never redeemed a single point. A main query is joined with this one, which extracts the total CLV of all of those customers who had atleast 1 point redeemed.
 
 WITH k AS (
@@ -461,7 +461,7 @@ GROUP BY
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
---c. Find the Loyalty Numbers of customers who booked the highest number of flights in a specific city.
+--3. Find the Loyalty Numbers of customers who booked the highest number of flights in a specific city.
 --Solution: A CTE is created first to join the two tables together to get the sum of all flights grouped against each loyalty number and its respective city. Each record is also ranked, partitioned by city. From there, main query fetches only the highest flight bookers in each city.
 
 WITH cte AS (
